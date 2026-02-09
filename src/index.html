@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self'; font-src 'self' https://fonts.gstatic.com;"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Electron Timer</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app">
+      <header class="app__header">
+        <div>
+          <p class="eyebrow">Focus tools</p>
+          <h1>Midnight Timer Studio</h1>
+          <p class="subtitle">A serene space to run timers, track sessions, and stay on beat.</p>
+        </div>
+        <div class="chip">Electron · Dark Mode</div>
+      </header>
+
+      <main class="grid">
+        <section class="card">
+          <div class="card__header">
+            <div>
+              <h2>Countdown Timer</h2>
+              <p>Set the duration and let the pulse guide you.</p>
+            </div>
+            <span class="badge">Timer</span>
+          </div>
+
+          <div class="timer__display">
+            <div class="ring" id="timer-ring" style="--progress: 0deg">
+              <div class="ring__inner">
+                <span class="time" id="timer-time">25:00</span>
+                <span class="label" id="timer-status">Ready</span>
+              </div>
+            </div>
+            <div class="timer__inputs">
+              <label>
+                Minutes
+                <input type="number" id="timer-minutes" min="0" max="180" value="25" />
+              </label>
+              <label>
+                Seconds
+                <input type="number" id="timer-seconds" min="0" max="59" value="0" />
+              </label>
+            </div>
+          </div>
+
+          <div class="controls">
+            <button class="btn btn--primary" id="timer-start">Start</button>
+            <button class="btn" id="timer-pause">Pause</button>
+            <button class="btn btn--ghost" id="timer-reset">Reset</button>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card__header">
+            <div>
+              <h2>Stopwatch</h2>
+              <p>Capture every beat with precision laps.</p>
+            </div>
+            <span class="badge badge--alt">Stopwatch</span>
+          </div>
+
+          <div class="stopwatch__display">
+            <div class="stopwatch__time" id="stopwatch-time">00:00.0</div>
+            <p class="stopwatch__status" id="stopwatch-status">Idle</p>
+          </div>
+
+          <div class="controls">
+            <button class="btn btn--primary" id="stopwatch-start">Start</button>
+            <button class="btn" id="stopwatch-lap">Lap</button>
+            <button class="btn btn--ghost" id="stopwatch-reset">Reset</button>
+          </div>
+
+          <div class="laps">
+            <div class="laps__header">
+              <span>Lap</span>
+              <span>Time</span>
+            </div>
+            <div class="laps__list" id="lap-list">
+              <p class="empty">No laps yet.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>
